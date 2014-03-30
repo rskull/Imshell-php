@@ -26,7 +26,9 @@ try {
     }
 
     // 置き換える文字
-    if (!empty($_POST['dot'])) {
+    if (!empty($argv[3])) {
+        $Imshell->setChara($argv[3]);
+    } elseif (!empty($_POST['dot'])) {
         $Imshell->setChara($_POST['dot']);
     }
 
