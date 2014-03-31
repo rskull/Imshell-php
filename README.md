@@ -2,6 +2,19 @@
 
  開発中
 
+# 使い方
+
+```php
+
+require_once 'Imshell.php';
+
+$Imshell = new Imshell;
+$Imshell->setImage('image.jpg');
+$Imshell->setWidth(80);
+$Imshell->setChara('■');
+
+```
+
 ## バージョン履歴
 
 [ 2014-03-30 ]

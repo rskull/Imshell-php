@@ -317,7 +317,7 @@ Class Imshell
     public function setChara($chara)
     {
         $this->bg_fill = false;
-        $this->chara = $chara;
+        $this->chara = preg_split('//u', $chara, -1, PREG_SPLIT_NO_EMPTY);
     }
 
     /**
@@ -402,15 +402,31 @@ Class Imshell
      */
     private function getChara()
     {
-        // セットした文字を順番に返す
-        $strs = preg_split('//u', $this->chara, -1, PREG_SPLIT_NO_EMPTY);
-        $str = $strs[$this->pointer];
-        $this->pointer += 1;
-        if ($this->pointer == count($strs)) {
+        $strs = $this->chara;
+        // 1文字目
+        $str = $strs[$this->pointer++];
+        if ($this->pointer > count($strs)-1) {
+            $this->pointer = 0;
+        }
+        // 2文字目
+        $str2 = $strs[$this->pointer++];
+        if ($this->pointer > count($strs)-1) {
             $this->pointer = 0;
         }
         // 1マス2文字幅 マルチバイトは1文字
-        return mb_strimwidth($str.$str, 0, 2, $str, 'utf8');
+        if (mb_strwidth($str, 'utf8') == 1) {
+            if (mb_strwidth($str2, 'utf8') == 1) {
+                // シングルバイト2文字
+                $str .= $str2;
+            } else {
+                // ２文字目がマルチだったら数合わせ
+                $str .= $str;
+            }
+            return $str;
+        }
+
+        // マルチバイト1文字
+        return $str;
     }
 
     /**
@@ -479,7 +495,7 @@ Class Imshell
         $res = array();
         foreach ($parts as $part) {
             $i = 0;
-            while ($i < count($this->incs) -1) {
+            while ($i < count($this->incs)-1) {
                 list($s, $b) = array($this->incs[$i], $this->incs[$i+1]);
                 if ($s <= $part && $part <= $b) {
                     $sl = abs($s - $part);
