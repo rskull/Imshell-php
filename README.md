@@ -56,6 +56,16 @@ $ curl imshell.tk -d url=[画像URL] -d size=100
 $ curl imshell.tk -F file=@image.jpg -F size=80 -F dot=■
 ```
 
+### Demo
+
+![Github](http://i.gzn.jp/img/2011/12/26/shirokuro-social-icons/icon-white-github.png)
+
+```shell
+curl imshell.tk -d url=http://i.gzn.jp/img/2011/12/26/shirokuro-social-icons/icon-white-github.png -d size=40 -d dot=Github
+```
+
+![Github](http://imshell.tk/demo.png)
+
 ## バージョン履歴
 
 [ 2014-03-30 ]
