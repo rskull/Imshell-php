@@ -70,6 +70,11 @@ curl imshell.tk -d url=http://i.gzn.jp/img/2011/12/26/shirokuro-social-icons/ico
 
 [ 2014-03-30 ]
 
-    v0.1.0
-        - 開発版リリース
+    v1.0.0
+        - リリース
+
+[ 2014-09-15 ]
+
+    v1.1.0
+        - キャッシュ機能追加
 
