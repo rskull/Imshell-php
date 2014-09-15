@@ -1,7 +1,12 @@
 <?php
 
+ini_set('display_errors', 1);
+
 // Class
 require_once 'Imshell.php';
+
+// Cache path
+define('CACHE_PATH', dirname(__FILE__).'/cache/');
 
 try {
 
@@ -49,25 +54,50 @@ try {
     }
 
     if (!empty($url)) {
-        $Imshell->setImage($url);
+
+        // オプション
+        $width = !empty($argv[2]) ? $argv[2] : filter_input(INPUT_POST, 'size');
+        $dot = !empty($argv[3]) ? $argv[3] : filter_input(INPUT_POST, 'dot');
+        $option = md5($width.$dot);
+
+        $md5 = md5_file($url);
+        $cache_file = CACHE_PATH.$md5.$option;
+
+        if (file_exists($cache_file)) {
+
+            // キャッシュを出力
+            echo file_get_contents($cache_file);
+
+        } else{
+
+            $Imshell->setImage($url);
+
+            // 横幅の文字数
+            if (!empty($width)) {
+                $Imshell->setWidth((int) $width);
+            }
+
+            // 置き換える文字
+            if (!empty($dot)) {
+                $Imshell->setChara($dot);
+            }
+
+            // シェル出力用に変換
+            $output = $Imshell->convert();
+
+            // キャッシュの作成
+            $fp = fopen($cache_file, 'w');
+            fwrite($fp, $output);
+            fclose($fp);
+
+            // 出力
+            echo $output;
+
+        }
+
     } else {
         throw new Exception('画像URLが指定されてません');
     }
-
-    // 横幅の文字数
-    $width = !empty($argv[2]) ? $argv[2] : filter_input(INPUT_POST, 'size');
-    if (!empty($width)) {
-        $Imshell->setWidth((int) $width);
-    }
-
-    // 置き換える文字
-    $dot = !empty($argv[3]) ? $argv[3] : filter_input(INPUT_POST, 'dot');
-    if (!empty($dot)) {
-        $Imshell->setChara($dot);
-    }
-
-    // 出力
-    echo $Imshell->convert();
 
 } catch (ImagickException $e) {
     echo "エラーが発生しました\n";
