@@ -1,7 +1,5 @@
 <?php
 
-ini_set('display_errors', 1);
-
 // Class
 require_once 'Imshell.php';
 
@@ -68,7 +66,7 @@ try {
             // キャッシュを出力
             echo file_get_contents($cache_file);
 
-        } else{
+        } else {
 
             $Imshell->setImage($url);
 
