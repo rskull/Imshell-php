@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <title>Imshell</title>
+</head>
+<body>
+
+    <!-- Main -->
+    <div class="main-wrap">
+        <div class="main">
+
+            <header>
+                <h1>Imshell</h1>
+                <h2>画像をシェルで表示可能な形式に変換するサービス</h2>
+            </header>
+
+            <section>
+                <h3>1. ローカルの画像を変換</h3>
+                <div class="source">
+                    $ curl imshell.tk -F file=@yourimg.png
+                </div>
+            </section>
+
+            <section>
+                <h3>2. 画像URLから変換</h3>
+                <div class="source">
+                    $ curl imshell.tk -d url=http://.../target.png
+                </div>
+            </section>
+
+            <section>
+                <h3>3. オプションの使用例</h3>
+                <div class="source">
+                    $ curl imshell.tk -d dot=■ -d size=60 -d url=http://.../target.png
+                </div>
+                <div class="source">
+                    $ curl imshell.tk -F dot=■ -F size=30 -F file=@target.png
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <!-- /Main -->
+
+    <!-- Foorter -->
+    <footer>
+        <div id="footer">
+            <p>Copyright 2014 Imshell All rights Resaved.</p>
+        </div>
+    </footer>
+    <!-- /Footer -->
+
+</body>
+</html>
