@@ -2,7 +2,7 @@
 
     画像をシェルで表示できる形式に変換するプログラムです。
     元々は遊びで、ログインメッセージのmotd用に画像を変換したかっただけです
-    公式: http://rskull.github.io/Imshell/
+    公式: [Imshell](http://rskull.github.io/Imshell/)
 
 ## 使い方
 
