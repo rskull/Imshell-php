@@ -2,8 +2,8 @@
 /**
  * 画像をシェル用に変換するライブラリ
  *
- * @version 1.0 2014/03/28
- * @author R.SkuLL
+ * @version 1.1.1 2016/02/27
+ * @author DotEarl
  * @copyright Geekz Web Development
  **/
 
@@ -403,26 +403,32 @@ Class Imshell
     private function getChara()
     {
         $strs = $this->chara;
+
         // 1文字目
         $str = $strs[$this->pointer++];
-        if ($this->pointer > count($strs)-1) {
+
+        if ($this->pointer == count($strs)) {
             $this->pointer = 0;
         }
+
         // 2文字目
-        $str2 = $strs[$this->pointer++];
-        if ($this->pointer > count($strs)-1) {
-            $this->pointer = 0;
-        }
+        $str2 = $strs[$this->pointer + 1];
+
         // 1マス2文字幅 マルチバイトは1文字
         if (mb_strwidth($str, 'utf8') == 1) {
             if (mb_strwidth($str2, 'utf8') == 1) {
                 // シングルバイト2文字
                 $str .= $str2;
+                $this->pointer++;
             } else {
                 // ２文字目がマルチだったら数合わせ
                 $str .= $str;
             }
             return $str;
+        }
+
+        if ($this->pointer == count($strs)) {
+            $this->pointer = 0;
         }
 
         // マルチバイト1文字

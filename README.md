@@ -70,6 +70,9 @@ curl imshell.tk -d url=http://i.gzn.jp/img/2011/12/26/shirokuro-social-icons/ico
 
 ## バージョン履歴
 
+    [ 2016-09-15 ] v1.1.1
+        - 正しく文字が繰り返されないバグを修正
+
     [ 2014-09-15 ] v1.1.0
         - キャッシュ機能追加
 
