@@ -7,7 +7,9 @@
  * @copyright Geekz Web Development
  **/
 
-Class Imshell
+namespace App;
+
+class Imshell
 {
     // 256 対応テーブル
     private $colors = array(
@@ -326,9 +328,11 @@ Class Imshell
     public function setWidth($width)
     {
         if ($this->max_width < $width) {
-            throw new Exception('最大サイズは'.$this->max_width.'です');
+            throw new \Exception('最大サイズは'.$this->max_width.'です');
         }
-        $this->width_len = $width;
+        if ($width > 2) {
+            $this->width_len = $width;
+        }
     }
 
     /**
@@ -412,23 +416,26 @@ Class Imshell
         }
 
         // 2文字目
-        $str2 = $strs[$this->pointer + 1];
+        $str2 = $strs[$this->pointer];
 
         // 1マス2文字幅 マルチバイトは1文字
         if (mb_strwidth($str, 'utf8') == 1) {
             if (mb_strwidth($str2, 'utf8') == 1) {
+
                 // シングルバイト2文字
                 $str .= $str2;
                 $this->pointer++;
+
+                if ($this->pointer == count($strs)) {
+                    $this->pointer = 0;
+                }
+
             } else {
                 // ２文字目がマルチだったら数合わせ
                 $str .= $str;
             }
-            return $str;
-        }
 
-        if ($this->pointer == count($strs)) {
-            $this->pointer = 0;
+            return $str;
         }
 
         // マルチバイト1文字

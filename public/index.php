@@ -1,14 +1,14 @@
 <?php
 
 // Class
-require_once 'Imshell.php';
+require_once '../vendor/autoload.php';
 
 // Cache path
-define('CACHE_PATH', dirname(__FILE__).'/cache/');
+define('CACHE_PATH', dirname(__FILE__).'/../cache/');
 
 try {
 
-    $Imshell = new Imshell;
+    $Imshell = new \App\Imshell;
 
     if (!empty($_FILES)) {
 
