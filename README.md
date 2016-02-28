@@ -1,3 +1,5 @@
+[![Build Status](https://circleci.com/gh/rskull/Imshell.svg?style=shield&circle-token=2e22b21385f4fda28a21e94f34d579b5be661e57)](https://circleci.com/gh/rskull/imshell/tree/master)
+
 # Imshell
 
     画像をシェルで表示できる形式に変換するプログラムです。
