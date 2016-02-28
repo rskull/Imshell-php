@@ -341,7 +341,7 @@ class Imshell
      */
     public function convert()
     {
-        $image = new Imagick($this->image);
+        $image = new \Imagick($this->image);
 
         // 2文字で1pxなので半分に画像縮小
         $img_width = floor($this->width_len / 2);
