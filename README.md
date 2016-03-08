@@ -1,6 +1,7 @@
-[![Build Status](https://circleci.com/gh/rskull/Imshell.svg?style=shield&circle-token=2e22b21385f4fda28a21e94f34d579b5be661e57)](https://circleci.com/gh/rskull/imshell/tree/master)
 
 # Imshell
+
+[![Build Status](https://circleci.com/gh/rskull/Imshell.svg?style=shield&circle-token=2e22b21385f4fda28a21e94f34d579b5be661e57)](https://circleci.com/gh/rskull/imshell/tree/master)
 
     画像をシェルで表示できる形式に変換するプログラムです。
     元々は遊びで、ログインメッセージのmotd用に画像を変換したかっただけです
@@ -72,7 +73,7 @@ curl imshell.tk -d url=http://i.gzn.jp/img/2011/12/26/shirokuro-social-icons/ico
 
 ## バージョン履歴
 
-    [ 2016-09-15 ] v1.1.1
+    [ 2016-02-29 ] v1.1.1
         - 正しく文字が繰り返されないバグを修正
 
     [ 2014-09-15 ] v1.1.0
